@@ -1,0 +1,58 @@
+CREATE TABLE groups (
+    id            INTEGER       PRIMARY KEY,
+    group_name VARCHAR(50)   not null,
+/*
+    1. Admin    
+    2. Vendor
+    3. User 
+*/
+);
+
+/*  Admin, Vendor, User  */
+
+
+
+CREATE TABLE users (
+    id            INTEGER       PRIMARY KEY,
+    first_name    VARCHAR(50)   not null,
+    last_name     VARCHAR(75)   not null,
+    group_name     VARCHAR(75)   not null
+);
+
+
+
+/* store user and group relationships from join users and groups table  */
+CREATE TABLE users_groups (
+    id            INTEGER       PRIMARY KEY,
+    userId    int    not null,
+    groupsId     int   not null
+);
+
+
+/*
+Eg:
+John Doe -> Admin, Vendor
+Jason Bowers -> User
+*/
+
+
+INSERT INTO users
+(first_name, last_name, group_name)
+VALUES
+('John', 'Doe', 'Admin')
+
+INSERT INTO users
+(first_name, last_name, group_name)
+VALUES
+('John', 'Doe', 'Vendor)
+
+
+INSERT INTO users
+(first_name, last_name, group_name)
+VALUES
+('Jason', 'Bowers', 'User')
+
+
+select first_name, last_name, group_name from users where first_name = 'John' and last_name='Doe';
+
+select first_name, last_name, group_name from users where first_name = 'Jason' and last_name='Bowers';
